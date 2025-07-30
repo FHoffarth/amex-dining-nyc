@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMEX Dining NYC – Interaktive Karte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>html, body, #map { height: 100%; margin: 0; }</style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([40.758, -73.9855], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const restaurants = [
+            ["Café Boulud", 40.7742, -73.9635],
+            ["Zuma New York", 40.7529, -73.9794],
+            ["Boulud Sud", 40.7725, -73.9831],
+            ["DANIEL", 40.7651, -73.9679],
+            ["The NoMad", 40.7450, -73.9880],
+            ["Le Bernardin", 40.7616, -73.9817],
+            ["Nobu Fifty Seven", 40.7646, -73.9761],
+            ["STK Downtown", 40.7397, -74.0074],
+            ["Nobu Downtown", 40.7099, -74.0101],
+            ["Cipriani Downtown", 40.7234, -74.0020],
+            ["Cipriani Dolci", 40.7527, -73.9772],
+            ["Harry Cipriani", 40.7644, -73.9738],
+            ["21 Club", 40.7603, -73.9777],
+            ["Quality Meats", 40.7642, -73.9765],
+            ["Quality Italian", 40.7644, -73.9764],
+            ["Gotham Bar & Grill", 40.7352, -73.9935]
+        ];
+
+        for (const [name, lat, lon] of restaurants) {
+            L.marker([lat, lon]).addTo(map).bindPopup(name);
+        }
+    </script>
+</body>
+</html>
